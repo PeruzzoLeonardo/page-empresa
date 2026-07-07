@@ -127,8 +127,11 @@
   .service-card:hover{transform:translateY(-6px); border-color:rgba(124,92,255,0.4);}
   .service-icon{
     width:48px; height:48px; border-radius:12px; background:var(--grad-soft);
-    display:flex; align-items:center; justify-content:center; font-size:1.4rem; margin-bottom:20px;
+    display:flex; align-items:center; justify-content:center; margin-bottom:20px; color:var(--accent2);
+    transition:transform .35s ease, background .35s ease;
   }
+  .service-icon svg{width:22px; height:22px;}
+  .service-card:hover .service-icon{transform:scale(1.12) rotate(-6deg); background:var(--grad);}
   .service-card h3{font-size:1.15rem; margin-bottom:10px;}
   .service-card p{color:var(--text-muted); font-size:0.92rem;}
 
@@ -136,11 +139,20 @@
   .process{
     display:grid; grid-template-columns:repeat(4,1fr); gap:24px; counter-reset:step;
   }
-  .step{position:relative; padding:28px 20px 20px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius);}
+  .step{
+    position:relative; padding:28px 20px 20px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+    transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+  }
+  .step:hover{
+    transform:translateY(-6px); border-color:rgba(124,92,255,0.4);
+    box-shadow:0 16px 32px -12px rgba(124,92,255,0.25);
+  }
   .step-num{
     font-family:'Sora',sans-serif; font-weight:800; font-size:1.8rem;
     background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; margin-bottom:12px; display:block;
+    transition:transform .3s ease;
   }
+  .step:hover .step-num{transform:scale(1.12); transform-origin:left;}
   .step h4{margin-bottom:8px; font-size:1.05rem;}
   .step p{color:var(--text-muted); font-size:0.9rem;}
 
@@ -151,11 +163,17 @@
   .price-card{
     background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
     padding:36px 28px; display:flex; flex-direction:column;
+    transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+  }
+  .price-card:hover{
+    transform:translateY(-8px); border-color:rgba(124,92,255,0.45);
+    box-shadow:0 20px 40px -14px rgba(124,92,255,0.3);
   }
   .price-card.featured{
     border-color:var(--accent1); background:linear-gradient(180deg, rgba(124,92,255,0.08), var(--card) 40%);
     position:relative; transform:scale(1.03);
   }
+  .price-card.featured:hover{transform:scale(1.03) translateY(-8px);}
   .featured-tag{
     position:absolute; top:-14px; left:50%; transform:translateX(-50%);
     background:var(--grad); color:#0a0a0f; font-size:0.75rem; font-weight:800;
@@ -271,8 +289,9 @@
   .contact-method:last-child{border-bottom:none;}
   .contact-method .ic{
     width:42px; height:42px; border-radius:10px; background:var(--grad-soft);
-    display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; color:var(--accent2);
   }
+  .contact-method .ic svg{width:19px; height:19px;}
   .contact-method b{display:block; font-size:0.95rem;}
   .contact-method span{color:var(--text-muted); font-size:0.85rem;}
 
@@ -309,9 +328,10 @@
   /* Whatsapp float */
   .wa-float{
     position:fixed; bottom:24px; right:24px; width:58px; height:58px; border-radius:50%;
-    background:#25d366; display:flex; align-items:center; justify-content:center;
-    box-shadow:0 8px 24px rgba(37,211,102,0.4); z-index:99; font-size:1.6rem; transition:transform .2s;
+    background:#25d366; display:flex; align-items:center; justify-content:center; color:#fff;
+    box-shadow:0 8px 24px rgba(37,211,102,0.4); z-index:99; transition:transform .2s;
   }
+  .wa-float svg{width:26px; height:26px;}
   .wa-float:hover{transform:scale(1.08);}
 
   /* Reveal animation */
