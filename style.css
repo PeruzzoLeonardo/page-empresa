@@ -61,22 +61,23 @@
 
   /* Hero */
   .hero{
-    padding:170px 0 60px; text-align:center; position:relative; overflow:hidden;
+    padding:150px 0 70px; text-align:center; position:relative; overflow:hidden;
   }
   .badge{
     display:inline-flex; align-items:center; gap:8px;
     padding:6px 16px; border-radius:999px; border:1px solid var(--border);
-    background:var(--card); font-size:0.85rem; color:var(--text-muted); margin-bottom:28px;
+    background:var(--card); font-size:0.85rem; color:var(--text-muted); margin-bottom:20px;
   }
   .badge span{color:var(--accent2);}
   .hero h1{
-    font-size:clamp(2.4rem, 6vw, 4.4rem); font-weight:800; line-height:1.08; max-width:900px; margin:0 auto 24px;
+    font-size:clamp(2.1rem, 5.5vw, 4.4rem); font-weight:800; line-height:1.12; max-width:880px; margin:0 auto 20px;
+    text-wrap:balance;
   }
   .grad-text{
     background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;
   }
   .hero p{
-    font-size:1.15rem; color:var(--text-muted); max-width:600px; margin:0 auto 40px;
+    font-size:1.1rem; color:#b7b7c6; max-width:600px; margin:0 auto 32px;
   }
   .hero-actions{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
   .btn{
@@ -90,11 +91,20 @@
   .btn-outline:hover{border-color:var(--accent2); color:var(--accent2);}
 
   .stats{
-    display:flex; justify-content:center; gap:60px; margin-top:40px; flex-wrap:wrap;
+    display:flex; justify-content:center; margin-top:28px;
   }
-  .stat{text-align:center;}
-  .stat b{font-family:'Sora',sans-serif; font-size:3rem; display:block; background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;}
-  .stat span{color:var(--text-muted); font-size:0.9rem;}
+  .stat{
+    display:inline-flex; align-items:center; gap:10px; text-align:left;
+    padding:10px 22px; border:1px solid var(--border); border-radius:999px; background:var(--card);
+  }
+  .stat b{font-family:'Sora',sans-serif; font-size:1.3rem; background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .stat span{color:var(--text-muted); font-size:0.85rem;}
+
+  @media (max-width:480px){
+    .hero{padding:130px 0 56px;}
+    .hero h1{font-size:clamp(1.9rem, 8vw, 2.6rem);}
+    .hero p{font-size:1rem;}
+  }
 
   /* Section headers */
   .section-head{text-align:center; max-width:640px; margin:0 auto 60px;}
