@@ -61,7 +61,7 @@
 
   /* Hero */
   .hero{
-    padding:170px 0 120px; text-align:center; position:relative; overflow:hidden;
+    padding:170px 0 60px; text-align:center; position:relative; overflow:hidden;
   }
   .badge{
     display:inline-flex; align-items:center; gap:8px;
@@ -90,10 +90,10 @@
   .btn-outline:hover{border-color:var(--accent2); color:var(--accent2);}
 
   .stats{
-    display:flex; justify-content:center; gap:60px; margin-top:80px; flex-wrap:wrap;
+    display:flex; justify-content:center; gap:60px; margin-top:40px; flex-wrap:wrap;
   }
   .stat{text-align:center;}
-  .stat b{font-family:'Sora',sans-serif; font-size:2.2rem; display:block; background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .stat b{font-family:'Sora',sans-serif; font-size:3rem; display:block; background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;}
   .stat span{color:var(--text-muted); font-size:0.9rem;}
 
   /* Section headers */
