@@ -5,7 +5,7 @@
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
   // Reveal on scroll
-  const revealEls = document.querySelectorAll('.reveal');
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
   const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -25,5 +25,5 @@
     const tipo = form.querySelector('select').value;
     const msg = form.querySelector('textarea').value;
     const body = encodeURIComponent(`Nome: ${nome.value}\nE-mail: ${email.value}\nTipo de projeto: ${tipo}\n\nMensagem:\n${msg}`);
-    window.location.href = `mailto:contato@devtech.com.br?subject=Orçamento de projeto&body=${body}`;
+    window.location.href = `mailto:leolp.dev@gmail.com?subject=Orçamento de projeto&body=${body}`;
   });
