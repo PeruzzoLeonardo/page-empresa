@@ -27,3 +27,23 @@
     const body = encodeURIComponent(`Nome: ${nome.value}\nE-mail: ${email.value}\nTipo de projeto: ${tipo}\n\nMensagem:\n${msg}`);
     window.location.href = `mailto:leolp.dev@gmail.com?subject=Orçamento de projeto&body=${body}`;
   });
+
+  // Chatbot (FastBots)
+  const chatToggle = document.getElementById('chatToggle');
+  const chatWindow = document.getElementById('chatWindow');
+  const chatClose = document.getElementById('chatClose');
+  const chatIframe = document.getElementById('chatIframe');
+  const CHATBOT_SRC = 'https://app.fastbots.ai/embed/cmrbdxex406iwpc1p097xbxqa';
+
+  function openChat() {
+    if (!chatIframe.src) chatIframe.src = CHATBOT_SRC; // carrega só no primeiro clique
+    chatWindow.classList.add('open');
+  }
+  function closeChat() {
+    chatWindow.classList.remove('open');
+  }
+
+  chatToggle.addEventListener('click', () => {
+    chatWindow.classList.contains('open') ? closeChat() : openChat();
+  });
+  chatClose.addEventListener('click', closeChat);
