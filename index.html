@@ -230,21 +230,21 @@
           </div>
           <a href="https://wa.me/5549999149603?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20LLDev%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:20px;">Chamar no WhatsApp</a>
         </div>
-        <form class="contact-form reveal" onsubmit="return false;">
+        <form class="contact-form reveal" id="contactForm">
           <h3 style="margin-bottom:4px;">Envie sua mensagem</h3>
           <div class="form-row">
             <div>
               <label>Nome</label>
-              <input type="text" placeholder="Seu nome" required>
+              <input type="text" name="name" placeholder="Seu nome" required>
             </div>
             <div>
               <label>E-mail</label>
-              <input type="email" placeholder="voce@email.com" required>
+              <input type="email" name="email" placeholder="voce@email.com" required>
             </div>
           </div>
           <div>
             <label>Tipo de projeto</label>
-            <select>
+            <select name="tipo_projeto">
               <option>Landing Page</option>
               <option>Site Institucional</option>
               <option>E-commerce</option>
@@ -253,9 +253,10 @@
           </div>
           <div>
             <label>Mensagem</label>
-            <textarea placeholder="Conte um pouco sobre seu projeto..."></textarea>
+            <textarea name="message" placeholder="Conte um pouco sobre seu projeto..." required></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+          <p id="formStatus" style="margin-top:10px; font-size:14px;"></p>
         </form>
       </div>
     </div>

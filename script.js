@@ -24,16 +24,39 @@
   }, { threshold: 0.12 });
   revealEls.forEach(el => io.observe(el));
 
-  // Contact form (no backend yet) -> fallback to mailto
-  const form = document.querySelector('.contact-form');
-  form.addEventListener('submit', (e) => {
+  // Contact form -> envia via Formspree (sem sair do site)
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/SEU_FORM_ID'; // TODO: substituir pelo endpoint gerado em formspree.io
+  const form = document.getElementById('contactForm');
+  const formStatus = document.getElementById('formStatus');
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const inputs = form.querySelectorAll('input, textarea, select');
-    const [nome, email] = inputs;
-    const tipo = form.querySelector('select').value;
-    const msg = form.querySelector('textarea').value;
-    const body = encodeURIComponent(`Nome: ${nome.value}\nE-mail: ${email.value}\nTipo de projeto: ${tipo}\n\nMensagem:\n${msg}`);
-    window.location.href = `mailto:leolp.dev@gmail.com?subject=Orçamento de projeto&body=${body}`;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+    formStatus.textContent = '';
+    formStatus.style.color = '';
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form),
+      });
+
+      if (response.ok) {
+        formStatus.textContent = 'Mensagem enviada com sucesso! Retornaremos em breve.';
+        formStatus.style.color = '#22c55e';
+        form.reset();
+      } else {
+        throw new Error('Falha no envio');
+      }
+    } catch (err) {
+      formStatus.textContent = 'Não foi possível enviar. Tente novamente ou chame no WhatsApp.';
+      formStatus.style.color = '#ef4444';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Enviar mensagem';
+    }
   });
 
   // Chatbot (FastBots)
