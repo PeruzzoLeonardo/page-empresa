@@ -51,8 +51,7 @@
   chatClose.addEventListener('click', closeChat);
   chatTeaser.addEventListener('click', openChat);
 
-  // Mostra o balão de chamada depois de alguns segundos e some sozinho se ignorado
+  // Mostra o balão de chamada e mantém fixo (some só ao abrir o chat)
   setTimeout(() => {
     if (!chatWindow.classList.contains('open')) chatTeaser.classList.add('show');
-  }, 3000);
-  setTimeout(() => chatTeaser.classList.remove('show'), 13000);
+  }, 1500);
