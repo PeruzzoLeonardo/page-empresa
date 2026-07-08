@@ -33,11 +33,13 @@
   const chatWindow = document.getElementById('chatWindow');
   const chatClose = document.getElementById('chatClose');
   const chatIframe = document.getElementById('chatIframe');
+  const chatTeaser = document.getElementById('chatTeaser');
   const CHATBOT_SRC = 'https://app.fastbots.ai/embed/cmrbdxex406iwpc1p097xbxqa';
 
   function openChat() {
     if (!chatIframe.src) chatIframe.src = CHATBOT_SRC; // carrega só no primeiro clique
     chatWindow.classList.add('open');
+    chatTeaser.classList.remove('show');
   }
   function closeChat() {
     chatWindow.classList.remove('open');
@@ -47,3 +49,10 @@
     chatWindow.classList.contains('open') ? closeChat() : openChat();
   });
   chatClose.addEventListener('click', closeChat);
+  chatTeaser.addEventListener('click', openChat);
+
+  // Mostra o balão de chamada depois de alguns segundos e some sozinho se ignorado
+  setTimeout(() => {
+    if (!chatWindow.classList.contains('open')) chatTeaser.classList.add('show');
+  }, 3000);
+  setTimeout(() => chatTeaser.classList.remove('show'), 13000);
