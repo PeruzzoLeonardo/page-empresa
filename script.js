@@ -1,4 +1,12 @@
-// Mobile menu
+// Altura real da tela (corrige 100vh/dvh quebrado em navegadores in-app, ex: WhatsApp)
+  function setRealVh() {
+    document.documentElement.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px');
+  }
+  setRealVh();
+  window.addEventListener('resize', setRealVh);
+  window.addEventListener('orientationchange', setRealVh);
+
+  // Mobile menu
   const burger = document.getElementById('burger');
   const navLinks = document.getElementById('navLinks');
   burger.addEventListener('click', () => navLinks.classList.toggle('open'));
