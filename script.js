@@ -24,39 +24,32 @@
   }, { threshold: 0.12 });
   revealEls.forEach(el => io.observe(el));
 
-  // Contact form -> envia via Formspree (sem sair do site)
-  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/SEU_FORM_ID'; // TODO: substituir pelo endpoint gerado em formspree.io
+  // Contact form -> abre o WhatsApp com a mensagem preenchida (site estático, sem backend de e-mail)
+  const WHATSAPP_NUMBER = '5549999149603';
   const form = document.getElementById('contactForm');
   const formStatus = document.getElementById('formStatus');
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const submitBtn = form.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Enviando...';
     formStatus.textContent = '';
     formStatus.style.color = '';
 
-    try {
-      const response = await fetch(FORMSPREE_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(form),
-      });
+    const nome = form.elements['name'].value.trim();
+    const email = form.elements['email'].value.trim();
+    const tipoProjeto = form.elements['tipo_projeto'].value.trim();
+    const mensagem = form.elements['message'].value.trim();
 
-      if (response.ok) {
-        formStatus.textContent = 'Mensagem enviada com sucesso! Retornaremos em breve.';
-        formStatus.style.color = '#22c55e';
-        form.reset();
-      } else {
-        throw new Error('Falha no envio');
-      }
-    } catch (err) {
-      formStatus.textContent = 'Não foi possível enviar. Tente novamente ou chame no WhatsApp.';
+    if (!nome || !email || !mensagem) {
+      formStatus.textContent = 'Preencha nome, e-mail e mensagem antes de enviar.';
       formStatus.style.color = '#ef4444';
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Enviar mensagem';
+      return;
     }
+
+    const texto = `Olá! Vim pelo site da LLDev e gostaria de um orçamento.\nNome: ${nome}\nE-mail: ${email}\nTipo de projeto: ${tipoProjeto}\nMensagem: ${mensagem}`;
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(texto)}`;
+
+    formStatus.textContent = 'Abrindo o WhatsApp...';
+    formStatus.style.color = '#22c55e';
+    window.open(whatsappUrl, '_blank');
   });
 
   // Chatbot (FastBots)
