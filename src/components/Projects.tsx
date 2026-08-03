@@ -85,17 +85,17 @@ function ProjectCard({ p }: { p: Project }) {
             (funcionam no toque), acima do link esticado. Clicar na imagem em
             si abre o projeto; o app abre só por este botão. */}
         {(p.appUrl || p.href.startsWith("/")) && (
-          <div className="absolute right-3 top-3 z-20 flex flex-col items-end gap-1.5">
+          <div className="absolute right-2.5 top-2.5 z-20 flex flex-col items-end gap-1">
             {p.appUrl && (
               <a
                 href={p.appUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="hover"
-                className="inline-flex items-center gap-1 rounded-full border border-[#3AA8FF]/40 bg-[#060c1a]/75 px-2.5 py-1 text-[11px] font-semibold text-[#3AA8FF] backdrop-blur transition-colors hover:border-[#3AA8FF] hover:bg-[#0066FF]/25 hover:text-white"
+                className="inline-flex items-center gap-1 rounded-full border border-[#3AA8FF]/40 bg-[#060c1a]/75 px-2 py-[3px] text-[10px] font-semibold text-[#3AA8FF] backdrop-blur transition-colors hover:border-[#3AA8FF] hover:bg-[#0066FF]/25 hover:text-white"
               >
                 Acessar o app
-                <ExternalLink size={12} />
+                <ExternalLink size={11} />
               </a>
             )}
             {p.href.startsWith("/") && (
@@ -104,10 +104,10 @@ function ProjectCard({ p }: { p: Project }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="hover"
-                className="inline-flex items-center gap-1 rounded-full border border-white/15 bg-[#060c1a]/75 px-2.5 py-1 text-[11px] font-semibold text-white/85 backdrop-blur transition-colors hover:border-[#3AA8FF] hover:text-[#3AA8FF]"
+                className="inline-flex items-center gap-1 rounded-full border border-white/15 bg-[#060c1a]/75 px-2 py-[3px] text-[10px] font-semibold text-white/85 backdrop-blur transition-colors hover:border-[#3AA8FF] hover:text-[#3AA8FF]"
               >
                 Ver projeto
-                <ArrowUpRight size={12} />
+                <ArrowUpRight size={11} />
               </a>
             )}
           </div>
