@@ -120,10 +120,10 @@ export default function Projects() {
   const intro = useReveal<HTMLDivElement>();
 
   return (
-    <section id="projetos" className="relative py-24 lg:py-32">
+    <section id="projetos" className="relative py-14 sm:py-24 lg:py-32">
       {/* intro heading */}
       <div ref={intro} className="mx-auto max-w-6xl px-6 lg:px-10">
-        <div className="mb-12 flex flex-wrap items-end justify-between gap-6 lg:mb-16">
+        <div className="mb-8 flex flex-wrap items-end justify-between gap-6 sm:mb-12 lg:mb-16">
           <div className="max-w-2xl">
             <p
               data-reveal
@@ -152,7 +152,7 @@ export default function Projects() {
       </div>
 
       {/* card gallery */}
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 sm:gap-12 lg:px-10">
+      <div className="mx-auto flex max-w-6xl flex-col gap-5 px-6 sm:gap-12 lg:px-10">
         {projects.map((p) => (
           <ProjectCard key={p.title} p={p} />
         ))}
