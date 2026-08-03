@@ -22,7 +22,7 @@ const projects: Project[] = [
     tag: "Plataforma web",
     title: "Forja Gestão Frotas",
     image: "/forja-frotas.png",
-    href: "#contato",
+    href: "/forja-frotas/",
     appUrl: "https://gerenciador-frota.vercel.app/",
   },
   {
