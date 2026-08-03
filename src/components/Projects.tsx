@@ -81,19 +81,36 @@ function ProjectCard({ p }: { p: Project }) {
           />
         </div>
 
-        {/* botão "Acessar o app": sempre visível (funciona no toque), acima
-            do link esticado, abre o sistema real em nova aba */}
-        {p.appUrl && (
-          <a
-            href={p.appUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-cursor="hover"
-            className="absolute right-4 top-4 z-20 inline-flex items-center gap-1.5 rounded-full border border-[#3AA8FF]/40 bg-[#060c1a]/70 px-3.5 py-2 text-xs font-semibold text-[#3AA8FF] backdrop-blur transition-colors hover:border-[#3AA8FF] hover:bg-[#0066FF]/25 hover:text-white sm:text-sm"
-          >
-            Acessar o app
-            <ExternalLink size={14} />
-          </a>
+        {/* Ações do card, empilhadas e compactas no canto — sempre visíveis
+            (funcionam no toque), acima do link esticado. Clicar na imagem em
+            si abre o projeto; o app abre só por este botão. */}
+        {(p.appUrl || p.href.startsWith("/")) && (
+          <div className="absolute right-3 top-3 z-20 flex flex-col items-end gap-1.5">
+            {p.appUrl && (
+              <a
+                href={p.appUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor="hover"
+                className="inline-flex items-center gap-1 rounded-full border border-[#3AA8FF]/40 bg-[#060c1a]/75 px-2.5 py-1 text-[11px] font-semibold text-[#3AA8FF] backdrop-blur transition-colors hover:border-[#3AA8FF] hover:bg-[#0066FF]/25 hover:text-white"
+              >
+                Acessar o app
+                <ExternalLink size={12} />
+              </a>
+            )}
+            {p.href.startsWith("/") && (
+              <a
+                href={p.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor="hover"
+                className="inline-flex items-center gap-1 rounded-full border border-white/15 bg-[#060c1a]/75 px-2.5 py-1 text-[11px] font-semibold text-white/85 backdrop-blur transition-colors hover:border-[#3AA8FF] hover:text-[#3AA8FF]"
+              >
+                Ver projeto
+                <ArrowUpRight size={12} />
+              </a>
+            )}
+          </div>
         )}
 
         {/* hover caption: subtle gradient + label, appears on desktop hover */}
@@ -106,10 +123,6 @@ function ProjectCard({ p }: { p: Project }) {
               {p.title}
             </h3>
           </div>
-          <span className="hidden shrink-0 items-center gap-2 rounded-full border border-[#3AA8FF]/40 bg-[#0066FF]/15 px-4 py-2 text-sm font-semibold text-[#3AA8FF] backdrop-blur sm:inline-flex">
-            Ver projeto
-            <ArrowUpRight size={16} />
-          </span>
         </div>
       </div>
     </div>
