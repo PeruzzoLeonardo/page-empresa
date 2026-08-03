@@ -74,9 +74,9 @@ export default function Process() {
   }, []);
 
   return (
-    <section id="processo" ref={root} className="relative px-6 py-28 lg:px-10 lg:py-36">
+    <section id="processo" ref={root} className="relative px-6 py-16 sm:py-28 lg:px-10 lg:py-36">
       <div className="mx-auto max-w-7xl">
-        <div ref={head} className="mb-20 max-w-2xl">
+        <div ref={head} className="mb-10 max-w-2xl sm:mb-20">
           <p
             data-reveal
             className="mb-4 text-sm font-medium uppercase tracking-[0.25em] text-[#3aa8ff]"

@@ -84,10 +84,10 @@ export default function About() {
   const root = useReveal<HTMLDivElement>({ stagger: 0.1 });
 
   return (
-    <section id="sobre" className="relative px-6 py-28 lg:px-10 lg:py-36">
+    <section id="sobre" className="relative px-6 py-16 sm:py-28 lg:px-10 lg:py-36">
       <div
         ref={root}
-        className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-2"
+        className="mx-auto grid max-w-7xl items-center gap-10 sm:gap-14 lg:grid-cols-2"
       >
         {/* text */}
         <div>

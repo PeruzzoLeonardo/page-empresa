@@ -49,10 +49,10 @@ ${message || "Gostaria de solicitar um orçamento."}`;
   };
 
   return (
-    <section id="contato" className="relative px-6 py-28 lg:px-10 lg:py-36">
+    <section id="contato" className="relative px-6 py-16 sm:py-28 lg:px-10 lg:py-36">
       <div className="mx-auto max-w-6xl">
         {/* heading */}
-        <div ref={root} className="mb-14 text-center">
+        <div ref={root} className="mb-10 text-center sm:mb-14">
           <p
             data-reveal
             className="mb-5 text-sm font-medium uppercase tracking-[0.25em] text-[#3aa8ff]"
