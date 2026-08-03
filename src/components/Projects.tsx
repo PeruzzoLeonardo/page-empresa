@@ -60,11 +60,14 @@ function ProjectCard({ p }: { p: Project }) {
         data-reveal
         className="group relative overflow-hidden rounded-[1.5rem] border border-white/[0.08] bg-[#060c1a] shadow-[0_40px_120px_-40px_rgba(0,102,255,.35)] transition-[transform,border-color,box-shadow] duration-500 hover:-translate-y-1 hover:border-[#3AA8FF]/30 hover:shadow-[0_55px_150px_-35px_rgba(0,102,255,.5)] sm:rounded-[2rem]"
       >
-        {/* link esticado: clicar em qualquer área do card abre os detalhes */}
+        {/* link esticado: clicar em qualquer área do card abre o projeto —
+            sempre em nova aba, para não perder o lugar na página da LLDev. */}
         <a
           href={p.href}
           data-cursor="hover"
           aria-label={`Ver projeto — ${p.title}`}
+          target="_blank"
+          rel="noopener noreferrer"
           className="absolute inset-0 z-10"
         />
 
