@@ -52,47 +52,53 @@ function ProjectCard({ p }: { p: Project }) {
   const ref = useReveal<HTMLDivElement>();
   return (
     <div ref={ref}>
-      {/* Container do card. Não é um <a> para permitir o botão "Acessar o
-          app" por cima — <a> aninhado é HTML inválido. O link de detalhes
-          é esticado sobre o card inteiro (stretched-link) e o botão do app
-          fica acima dele com pointer-events próprios. */}
+      {/* Container do card. A imagem é o link para o projeto; as ações ficam
+          numa barra abaixo da imagem, para nunca cobrir o texto da arte. */}
       <div
         data-reveal
-        className="group relative overflow-hidden rounded-[1.5rem] border border-white/[0.08] bg-[#060c1a] shadow-[0_40px_120px_-40px_rgba(0,102,255,.35)] transition-[transform,border-color,box-shadow] duration-500 hover:-translate-y-1 hover:border-[#3AA8FF]/30 hover:shadow-[0_55px_150px_-35px_rgba(0,102,255,.5)] sm:rounded-[2rem]"
+        className="group overflow-hidden rounded-[1.5rem] border border-white/[0.08] bg-[#060c1a] shadow-[0_40px_120px_-40px_rgba(0,102,255,.35)] transition-[transform,border-color,box-shadow] duration-500 hover:-translate-y-1 hover:border-[#3AA8FF]/30 hover:shadow-[0_55px_150px_-35px_rgba(0,102,255,.5)] sm:rounded-[2rem]"
       >
-        {/* link esticado: clicar em qualquer área do card abre o projeto —
-            sempre em nova aba, para não perder o lugar na página da LLDev. */}
+        {/* imagem clicável: abre o projeto (detalhes) em nova aba.
+            16/9 == aspecto da arte → encaixe perfeito, sem corte nem barras */}
         <a
           href={p.href}
           data-cursor="hover"
           aria-label={`Ver projeto — ${p.title}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="absolute inset-0 z-10"
-        />
-
-        {/* 16/9 frame == artwork aspect → perfect fit, no crop, no bands */}
-        <div className="aspect-[16/9] w-full overflow-hidden">
+          className="relative block aspect-[16/9] w-full overflow-hidden"
+        >
           <img
             src={p.image}
             alt={p.title}
             loading="lazy"
             className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
           />
-        </div>
 
-        {/* Ações do card, empilhadas e compactas no canto — sempre visíveis
-            (funcionam no toque), acima do link esticado. Clicar na imagem em
-            si abre o projeto; o app abre só por este botão. */}
+          {/* hover caption: subtle gradient + label, appears on desktop hover */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-5 opacity-0 transition-opacity duration-500 group-hover:opacity-100 sm:p-7">
+            <div>
+              <p className="text-xs font-medium uppercase tracking-[0.22em] text-[#3AA8FF]">
+                {p.index} / {p.tag}
+              </p>
+              <h3 className="mt-1 font-display text-lg font-bold text-white sm:text-2xl">
+                {p.title}
+              </h3>
+            </div>
+          </div>
+        </a>
+
+        {/* barra de ações, abaixo da imagem — lado a lado, à direita; nunca
+            cobre o texto da arte do card. Imagem → Ver projeto; app só aqui. */}
         {(p.appUrl || p.href.startsWith("/")) && (
-          <div className="absolute right-2.5 top-2.5 z-20 flex flex-col items-end gap-1">
+          <div className="flex items-center justify-end gap-2 border-t border-white/[0.06] px-3 py-2">
             {p.appUrl && (
               <a
                 href={p.appUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="hover"
-                className="inline-flex items-center gap-1 rounded-full border border-[#3AA8FF]/40 bg-[#060c1a]/75 px-2 py-[3px] text-[10px] font-semibold text-[#3AA8FF] backdrop-blur transition-colors hover:border-[#3AA8FF] hover:bg-[#0066FF]/25 hover:text-white"
+                className="inline-flex items-center gap-1 rounded-full border border-[#3AA8FF]/40 bg-[#0066FF]/10 px-2 py-[3px] text-[10px] font-semibold text-[#3AA8FF] transition-colors hover:border-[#3AA8FF] hover:bg-[#0066FF]/25 hover:text-white"
               >
                 Acessar o app
                 <ExternalLink size={11} />
@@ -104,7 +110,7 @@ function ProjectCard({ p }: { p: Project }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="hover"
-                className="inline-flex items-center gap-1 rounded-full border border-white/15 bg-[#060c1a]/75 px-2 py-[3px] text-[10px] font-semibold text-white/85 backdrop-blur transition-colors hover:border-[#3AA8FF] hover:text-[#3AA8FF]"
+                className="inline-flex items-center gap-1 rounded-full border border-white/15 px-2 py-[3px] text-[10px] font-semibold text-white/85 transition-colors hover:border-[#3AA8FF] hover:text-[#3AA8FF]"
               >
                 Ver projeto
                 <ArrowUpRight size={11} />
@@ -112,18 +118,6 @@ function ProjectCard({ p }: { p: Project }) {
             )}
           </div>
         )}
-
-        {/* hover caption: subtle gradient + label, appears on desktop hover */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-4 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-5 opacity-0 transition-opacity duration-500 group-hover:opacity-100 sm:p-7">
-          <div>
-            <p className="text-xs font-medium uppercase tracking-[0.22em] text-[#3AA8FF]">
-              {p.index} / {p.tag}
-            </p>
-            <h3 className="mt-1 font-display text-lg font-bold text-white sm:text-2xl">
-              {p.title}
-            </h3>
-          </div>
-        </div>
       </div>
     </div>
   );
