@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LLDev — Landing Page Premium
 
-## Getting Started
+Landing page cinematográfica para a **LLDev**, empresa de desenvolvimento de sites, sistemas web, aplicativos e automações.
 
-First, run the development server:
+Visual inspirado em Apple / Linear / Stripe / Vercel: fundo vivo, animações de scroll, dispositivos 3D flutuantes e microinterações.
+
+## Stack
+
+- **Next.js 16** (App Router, Turbopack) + **React 19**
+- **TypeScript**
+- **Tailwind CSS v4** (tokens via `@theme` em `globals.css`)
+- **Framer Motion** — reveals, entradas, scroll progress
+- **GSAP + ScrollTrigger** — coreografia do hero, timeline desenhada, zoom de imagens
+- **Lucide Icons** (+ ícones de marca inline em `ui/BrandIcons.tsx`)
+
+## Rodar
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # build de produção (estático)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Estrutura
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+  app/
+    layout.tsx        # fontes Space Grotesk + Inter, metadata
+    globals.css       # tokens de cor, utilitários, keyframes
+    page.tsx          # composição das seções
+  components/
+    Background.tsx      # canvas de partículas + grid + glows reativos ao scroll
+    CustomCursor.tsx    # cursor customizado (dot + ring)
+    ScrollProgress.tsx  # barra de progresso no topo
+    Navbar.tsx          # navbar transparente -> blur ao rolar
+    Hero.tsx            # dispositivos 3D flutuantes + scroll choreography
+    Impact.tsx          # texto surgindo palavra por palavra
+    Services.tsx        # cards com tilt 3D
+    Projects.tsx        # cards com fade/scale/blur + zoom no scroll
+    Process.tsx         # timeline com linha desenhada no scroll
+    About.tsx           # layout dividido + contadores animados
+    CTA.tsx             # seção final com partículas + botão pulsante
+    Footer.tsx
+    ui/                 # MagneticButton, TiltCard, WordReveal, Logo, BrandIcons
+    mockups/            # dashboards e telas de projeto em SVG (sem imagens externas)
+  hooks/
+    useMagnetic.ts      # hover magnético
+    useCounter.ts       # contagem animada ao entrar em tela
+  lib/
+    gsap.ts             # registro dos plugins GSAP
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Detalhes de implementação
 
-## Learn More
+- **Sem imagens externas**: todos os dashboards e telas são SVG gerados em código.
+- **Performance**: animações via `requestAnimationFrame`/`transform`, canvas com contagem de partículas proporcional à tela, `prefers-reduced-motion` respeitado.
+- **Paleta**: `#030712` (bg), `#0066FF` / `#00A8FF` / `#3AA8FF` (azuis), `#9CA3AF` (texto secundário).
 
-To learn more about Next.js, take a look at the following resources:
+## Personalização rápida
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Cores**: bloco `@theme` em `src/app/globals.css`.
+- **WhatsApp / e-mail**: `src/components/CTA.tsx` (`wa.me/5500000000000`, `contato@lldev.com.br`).
+- **Contato / redes**: `src/components/Footer.tsx`.
