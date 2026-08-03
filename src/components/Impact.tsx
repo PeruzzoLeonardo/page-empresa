@@ -27,11 +27,11 @@ export default function Impact() {
   const root = useReveal<HTMLDivElement>({ stagger: 0.06 });
 
   return (
-    <section className="relative flex min-h-[85vh] items-center px-6 py-32 lg:px-10">
+    <section className="relative flex min-h-0 items-center px-6 py-16 sm:min-h-[85vh] sm:py-32 lg:px-10">
       <div ref={root} className="mx-auto w-full max-w-5xl text-center">
         <p
           data-reveal
-          className="mb-10 text-sm font-medium uppercase tracking-[0.3em] text-[#3aa8ff]"
+          className="mb-6 text-sm font-medium uppercase tracking-[0.3em] text-[#3aa8ff] sm:mb-10"
         >
           O que realmente importa
         </p>
