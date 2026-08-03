@@ -189,6 +189,20 @@ const STYLES = `
   .forja .close h2 { font-weight: 900; font-size: var(--step-3); text-transform: uppercase; letter-spacing: -.02em; line-height: 1; max-width: 18ch; margin: 0 auto; }
   .forja .close h2 .molten { background: linear-gradient(100deg, var(--accent), var(--spark)); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .forja .close p { color: var(--muted); max-width: 42ch; margin: 1.1rem auto 0; }
+
+  .forja .cta {
+    display: inline-flex; align-items: center; gap: .6rem;
+    margin-top: clamp(1.6rem, 4vw, 2.2rem);
+    padding: .85rem 1.6rem; border-radius: 999px;
+    font-family: var(--font-display); font-weight: 800; font-size: var(--step-0);
+    letter-spacing: .01em; text-decoration: none;
+    color: var(--ink-on-accent);
+    background: linear-gradient(140deg, var(--accent), var(--accent-2));
+    box-shadow: 0 16px 36px -14px color-mix(in srgb, var(--accent) 70%, transparent);
+    transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+  }
+  .forja .cta:hover { transform: translateY(-2px); filter: brightness(1.05); box-shadow: 0 22px 48px -16px color-mix(in srgb, var(--accent) 78%, transparent); }
+  .forja .cta svg { width: 18px; height: 18px; }
   .forja .foot { color: var(--muted); font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: .1em; text-transform: uppercase; text-align: center; padding-bottom: clamp(2rem,5vw,3rem); }
 
   .forja .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
@@ -383,6 +397,10 @@ const CONTENT = `
   <section class="wrap close reveal">
     <h2>Do cadastro ao ranking, <span class="molten">forjado num só app.</span></h2>
     <p>Forja Fitness junta gestão, treino, avaliação, comunidade e IA na palma da mão — para o professor crescer sem virar refém de planilhas.</p>
+    <a class="cta" href="https://academia-app-three-iota.vercel.app/?instalar" target="_blank" rel="noopener noreferrer">
+      Acessar o app
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+    </a>
   </section>
 
   <p class="foot">Forja Fitness · Diferenciais da plataforma</p>
