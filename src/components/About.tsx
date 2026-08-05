@@ -1,7 +1,6 @@
 "use client";
 
 import { Check } from "lucide-react";
-import { useCounter } from "@/hooks/useCounter";
 import { useReveal } from "@/hooks/useReveal";
 
 const points = [
@@ -9,29 +8,6 @@ const points = [
   "Foco em simplicidade, desempenho e experiência",
   "Suporte e evolução contínua",
 ];
-
-function Stat({
-  end,
-  suffix,
-  label,
-  decimals = 0,
-}: {
-  end: number;
-  suffix?: string;
-  label: string;
-  decimals?: number;
-}) {
-  const { ref, value } = useCounter(end);
-  return (
-    <div ref={ref as React.RefObject<HTMLDivElement>}>
-      <div className="font-display text-4xl font-bold text-white">
-        {value.toFixed(decimals)}
-        {suffix}
-      </div>
-      <div className="mt-1 text-sm text-[#9CA3AF]">{label}</div>
-    </div>
-  );
-}
 
 function OfficeVisual() {
   return (
@@ -129,11 +105,6 @@ export default function About() {
             ))}
           </ul>
 
-          <div className="mt-12 grid grid-cols-3 gap-6 border-t border-white/[0.07] pt-8">
-            <Stat end={50} suffix="+" label="Projetos entregues" />
-            <Stat end={98} suffix="%" label="Clientes satisfeitos" />
-            <Stat end={5} suffix="+" label="Anos de experiência" />
-          </div>
         </div>
 
         {/* visual */}
